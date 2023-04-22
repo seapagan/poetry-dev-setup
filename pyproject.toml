@@ -15,6 +15,7 @@ build-backend = "poetry.core.masonry.api"
 
 # All entries after this, install and configure dev dependencies
 [tool.poetry.group.dev.dependencies]
+bandit = {extras = ["toml"], version = "^1.7.5"}
 black = "^23.3.0"
 flake8 = "^6.0.0"
 flake8-docstrings = "^1.7.0"
