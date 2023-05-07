@@ -13,16 +13,30 @@ python = "^3.10"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-# All entries after this, install and configure dev dependencies
+# Configure dev dependencies
 [tool.poetry.group.dev.dependencies]
-bandit = {extras = ["toml"], version = "^1.7.5"}
+bandit = { extras = ["toml"], version = "^1.7.5" }
 black = "^23.3.0"
 flake8 = "^6.0.0"
 flake8-docstrings = "^1.7.0"
 flake8-pyproject = "^1.2.3"
 isort = "^5.12.0"
 pylint = "^2.17.2"
+pep8-naming = "^0.13.3"
+poethepoet = "^0.20.0"
+pre-commit = "^3.3.1"
+pytest = "^7.3.1"
+pytest-cov = "^4.0.0"
+pytest-xdist = "^3.2.1"
+pytest-sugar = "^0.9.7"
+pytest-randomly = "^3.12.0"
+pytest-reverse = "^1.5.0"
 
+# setup PoeThePoet tasks
+[tool.poe.tasks]
+pre = "pre-commit run --all-files"
+
+# configure assorted tools and linters
 [tool.isort]
 profile = "black"
 
@@ -43,5 +57,18 @@ exclude = '''
 
 [tool.flake8]
 max-line-length = 80
+exclude = ["__init__.py", ".git", "migrations/versions/*"]
 extend-ignore = ["E203"]
-doctring-convention = "google"
+docstring-convention = "google"
+
+[tool.bandit]
+exclude_dirs = []
+
+[tool.bandit.assert_used]
+skips = ['*_test.py', '*/test_*.py']
+
+[tool.pydocstyle]
+add-ignore = ["D104"]
+
+[tool.pytest.ini_options]
+filterwarnings = ["ignore:'crypt' is deprecated:DeprecationWarning"]
