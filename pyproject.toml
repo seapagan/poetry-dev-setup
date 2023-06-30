@@ -7,7 +7,7 @@ readme = "README.md"
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.8.1,<4.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -15,26 +15,38 @@ build-backend = "poetry.core.masonry.api"
 
 # Configure dev dependencies
 [tool.poetry.group.dev.dependencies]
+# linting and security checks
 bandit = { extras = ["toml"], version = "^1.7.5" }
 black = "^23.3.0"
 flake8 = "^6.0.0"
 flake8-docstrings = "^1.7.0"
 flake8-pyproject = "^1.2.3"
+flake8-pytest-style = "^1.7.2"
 isort = "^5.12.0"
 pylint = "^2.17.2"
 pep8-naming = "^0.13.3"
+pre-commit = "^3.3.3"
+pydocstyle = "^6.3.0"
+
+# task runner
 poethepoet = "^0.20.0"
-pre-commit = "^3.3.1"
-pytest = "^7.3.1"
+
+# testing
+pytest = "^7.4.0"
 pytest-cov = "^4.0.0"
 pytest-xdist = "^3.2.1"
 pytest-sugar = "^0.9.7"
 pytest-randomly = "^3.12.0"
-pytest-reverse = "^1.5.0"
+pytest-reverse = "^1.6.0"
+pytest-asyncio = "^0.21.0"
+pytest-mock = "^3.11.1"
+mock = "^5.0.2"
+faker = "^18.11.2"
 
 # setup PoeThePoet tasks
 [tool.poe.tasks]
 pre = "pre-commit run --all-files"
+lint = "pylint **/*.py"
 
 # configure assorted tools and linters
 [tool.isort]
@@ -57,8 +69,8 @@ exclude = '''
 
 [tool.flake8]
 max-line-length = 80
-exclude = ["__init__.py", ".git", "migrations/versions/*"]
-extend-ignore = ["E203"]
+exclude = ["__init__.py", ".git"]
+extend-ignore=["E203", "W503"]
 docstring-convention = "google"
 
 [tool.bandit]
@@ -71,4 +83,4 @@ skips = ['*_test.py', '*/test_*.py']
 add-ignore = ["D104"]
 
 [tool.pytest.ini_options]
-filterwarnings = ["ignore:'crypt' is deprecated:DeprecationWarning"]
+filterwarnings = []
