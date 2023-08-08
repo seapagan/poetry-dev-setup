@@ -1,21 +1,24 @@
 # Basic Python project shell <!-- omit in toc -->
 
-This repository is a template for a basic Python project using
-[Poetry](https://python-poetry.org/), with assorted Linting and Testing
-libraries installed as standard. It also uses
-[pre-commit](https://pre-commit.com/)
+## Deprecation Notice
 
-I will tweak and update this as I see the need in my own coding use, and also
-welcome suggestions and pull requests.
+This project is largely deprecated in favour of my
+[Pymaker](https://github.com/seapagan/py-maker) project, which is a command-line
+application that will create a new Python project for you, based on a template
+and can be installed globally from PyPI. I probably won't be updating this
+project any more, but I'll leave it here for now.
 
-Shortly this will be converted into an installable package with a command line
-that can be used to create a new project from the template at will.
-
+- [Deprecation Notice](#deprecation-notice)
 - [Installation](#installation)
   - [Dependencies](#dependencies)
   - [Customise](#customise)
   - [Pre-commit](#pre-commit)
 - [License](#license)
+
+This repository is a template for a basic Python project using
+[Poetry](https://python-poetry.org/), with assorted Linting and Testing
+libraries installed as standard. It also uses
+[pre-commit](https://pre-commit.com/)
 
 ## Installation
 
